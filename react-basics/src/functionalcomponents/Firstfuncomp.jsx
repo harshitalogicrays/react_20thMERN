@@ -22,7 +22,7 @@
 import React from 'react'
 const Firstfuncomp = () => {
   return (
-    <div> <h1>First Fun comp</h1> </div>
+    <React.Fragment> <h1>First Fun comp</h1> </React.Fragment>
   )}
 export default Firstfuncomp
 

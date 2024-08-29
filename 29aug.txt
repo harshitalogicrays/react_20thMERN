@@ -1,0 +1,44 @@
+npx create-react-app app-name
+
+Fragment -
+
+<React.Fragment>
+
+</React.Fragment>
+
+import {Fragment} from 'react'
+<Fragment></Fragment>
+
+<></> => shorthand of Fragment
+
+<!--   --> 
+// or /* */
+JSX comment  -  {/*   */}
+======================================
+npm i bootstrap 
+npm i bootstrap-icons 
+
+===========================================
+<h1 id="" class="" name="" style=""></h1> //attribute
+
+<Propsdemo username="" address=""></Propsdemo> //properties - props
+
+===========
+conditional rendering - 
+1. ternary operator - ?: (condition ? true : false)
+2. short circuit operator - &&  (condition &&  true )
+
+
+let add = (a,b)=>a+b
+
+let add = (a,b)=>{return a+b}
+list rendering  - 
+map 
+key prop 
+
+
+children props - 
+  <PropsDemoChildren products={["product1","product2","product3","product4"]}>
+    <p>paragraph</p>
+    <div>div data</div>
+  </PropsDemoChildren>
