@@ -35,6 +35,7 @@ const propsdemo = ({username,address,isActive}) => {
       : ''
   }</h4> */}
 
+<h4>{isActive  && <>Yes He is Active</> }</h4>
   <h4>{(isActive && address=="ahmedabad") && <>Yes He is Active</> }</h4>
 
   <PropsDemoChildren products={["product1","product2","product3","product4"]}>

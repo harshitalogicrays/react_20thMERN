@@ -23,9 +23,10 @@
 
 import React from 'react'
 
-const PropsDemoChildren = ({products,children}) => {
+const PropsDemoChildren = ({products=[],children}) => {
   return (
     <>
+    {products.length==0 && <h1>No product found</h1>}
     {products.map((item,i)=>{ return <h1 key={i}>{item}</h1>})}
 
     {children[2]}

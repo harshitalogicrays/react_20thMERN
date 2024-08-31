@@ -1,0 +1,31 @@
+ defaultProps - 
+
+ event  - camelCase  
+ onClick 
+ 
+variable - 
+state  - local (only within the component we can use it , we can not pass it to child directly. if we want to pass state then we have to pass it using props )
+
+functional component - react hooks (functions - with builtin functionality )
+v 16
+useState() -  we can create a state variable 
+useEffect
+useRef
+useContext 
+useCallback
+useMemo
+useLayoutEffect 
+useReducers 
+etc.
+custom hooks 
+
+counter -
+
+=================================================================================
+form 
+form validations
+
+
+
+ 
+  
