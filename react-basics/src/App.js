@@ -6,10 +6,13 @@ import Counter from './functionalcomponents/Counter';
 import EventDemoinfun from './functionalcomponents/EventDemoinfun';
 import Firstfuncomp from './functionalcomponents/Firstfuncomp';
 import Propsdemo from './functionalcomponents/propsdemo';
+import Form1 from './functionalcomponents/Form1';
+import Header from './Header';
+import { Outlet } from 'react-router-dom';
 function App() {
   let [val]=useState("1")
   return (
-    <div className="container mt-5">
+    <>
       {/* <div className="App">
             <h1>Hello React</h1>
             <h2>Welcome to LRA</h2>
@@ -24,9 +27,16 @@ function App() {
 
       {/* <EventDemoinfun/> */}
 
-        <Addition/><hr/>
-        <Counter num={val}/>
-    </div>
+        {/* <Addition/><hr/> */}
+        {/* <Counter num={val}/> */}
+  
+      {/* <Form1></Form1> */}
+      
+      <Header/>
+      <div className='container mt-5'>
+         <Outlet/>
+      </div>
+    </>
   );
 }
 export default App;

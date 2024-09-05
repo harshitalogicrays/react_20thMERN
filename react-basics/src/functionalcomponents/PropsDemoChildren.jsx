@@ -23,7 +23,7 @@
 
 import React from 'react'
 
-const PropsDemoChildren = ({products=[],children}) => {
+const PropsDemoChildren = ({products=[],children=[]}) => {
   return (
     <>
     {products.length==0 && <h1>No product found</h1>}
