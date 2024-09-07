@@ -1,0 +1,21 @@
+let student ={fname:"erete",lname:"edete",age:30}
+
+let employee={...student,lname:'eerere'}
+
+
+1.inline css -  <h1 style={{color:'red',backgroundColor:'GrayText'}}>404 Not Found</h1>
+
+2. css file  -  import  'path' (all children of the comp wherever we have imported css can use css without import it)
+3. css variable -      
+<h1 style={cssvar}>404 Not Found</h1>
+
+4. module css -  .module.css  (have to import in the comp. wherever we want to use it)
+
+import cssm from 'path'
+ <h1 className={cssm.notfound}>404 Not Found</h1>
+
+5. bootstrap 
+6. React Bootstrap 
+7. styled-components 
+=====================================================
+lifting the state up - counter 

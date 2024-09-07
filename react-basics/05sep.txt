@@ -1,3 +1,0 @@
-let student ={fname:"erete",lname:"edete",age:30}
-
-let employee={...student,lname:'eerere'}
