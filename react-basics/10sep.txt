@@ -1,0 +1,31 @@
+=====================================================
+
+lifting the state up - counter 
+
+Countercomp -> count -> 1
+
+ChildrenCounter - Buttons 
+
+Parent -----> child (via prop)
+child ----> parent (not allowed )
+============================================================
+form - react hook form (3rd tool)
+list rendering - product card
+
+
+function outer(){
+    let a =60
+
+    function inner(){
+        ..change a value
+        a=60 
+    }
+}
+
+=========================================================================
+
+<div class="card"> </nav>
+
+react bootstrap - <Card></Card>
+                <Button></Button>
+form 

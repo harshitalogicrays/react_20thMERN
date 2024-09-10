@@ -17,5 +17,3 @@ import cssm from 'path'
 5. bootstrap 
 6. React Bootstrap 
 7. styled-components 
-=====================================================
-lifting the state up - counter 

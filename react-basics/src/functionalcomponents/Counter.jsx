@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 const Counter = ({num}) => {
     // let [count,setCount]=useState('')
    
-    let [count,setCount]=useState(parseInt(num))
+    let [count,setCount]=useState(Number(num))
     let handleIncrease=()=>{
         // setCount(parseInt(count+1)) 
         setCount((prev)=>parseInt(prev+1))

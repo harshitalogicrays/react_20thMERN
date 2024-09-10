@@ -8,6 +8,7 @@ import Form1 from './functionalcomponents/Form1'
 import Pagenotfound from './Pagenotfound'
 import Home from './functionalcomponents/Home'
 import FormValidations from './functionalcomponents/FormValidations'
+import ParentCounter from './functionalcomponents/ParentCounter'
 
 const Routing = () => {
   return (
@@ -17,9 +18,10 @@ const Routing = () => {
             <Route path='' element={<Home/>}/>
             <Route path='fundemo' element={<Firstfuncomp/>}/>
             <Route path='funprops' element={<PropsDemoChildren/>}/>
-            <Route path='funstate/counter' element={<Counter/>}/>
+            <Route path='funstate/counter' element={<Counter num=''/>}/>
             <Route path='funform' element={<Form1/>} /> 
             <Route path='funform/validation' element={<FormValidations/>}/> 
+            <Route path='lifting' element={<ParentCounter/>} /> 
         </Route>
 
         <Route path="*" element={<Pagenotfound/>}/>
