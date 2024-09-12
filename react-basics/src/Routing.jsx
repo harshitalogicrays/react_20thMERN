@@ -9,6 +9,7 @@ import Pagenotfound from './Pagenotfound'
 import Home from './functionalcomponents/Home'
 import FormValidations from './functionalcomponents/FormValidations'
 import ParentCounter from './functionalcomponents/ParentCounter'
+import ReactHookFormDemo from './functionalcomponents/ReactHookFormDemo'
 
 const Routing = () => {
   return (
@@ -22,6 +23,7 @@ const Routing = () => {
             <Route path='funform' element={<Form1/>} /> 
             <Route path='funform/validation' element={<FormValidations/>}/> 
             <Route path='lifting' element={<ParentCounter/>} /> 
+            <Route path='rhf' element={<ReactHookFormDemo/>} />
         </Route>
 
         <Route path="*" element={<Pagenotfound/>}/>

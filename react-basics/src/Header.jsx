@@ -7,7 +7,8 @@ const Header = () => {
     {id:2,text:'state demo',url:'/funstate/counter'},
     {id:3,text:'form demo',url:'/funform'},
     {id:4,text:'form validations',url:'/funform/validation'},
-    {id:5,text:'Lifting the state up',url:'/lifting'}
+    {id:5,text:'Lifting the state up',url:'/lifting'},
+    {id:6,text:'React hook Form + React Bootstrap',url:'/rhf'}
   ]
   return (
     <nav class="navbar navbar-expand-lg bg-dark  navbar-dark">
