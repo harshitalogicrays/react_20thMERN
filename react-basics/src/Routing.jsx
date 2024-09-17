@@ -10,6 +10,8 @@ import Home from './functionalcomponents/Home'
 import FormValidations from './functionalcomponents/FormValidations'
 import ParentCounter from './functionalcomponents/ParentCounter'
 import ReactHookFormDemo from './functionalcomponents/ReactHookFormDemo'
+import CustomCompDemo from './functionalcomponents/CustomCompDemo'
+import Products from './functionalcomponents/Products'
 
 const Routing = () => {
   return (
@@ -24,6 +26,8 @@ const Routing = () => {
             <Route path='funform/validation' element={<FormValidations/>}/> 
             <Route path='lifting' element={<ParentCounter/>} /> 
             <Route path='rhf' element={<ReactHookFormDemo/>} />
+            <Route path='custom' element={<CustomCompDemo/>}/>
+            <Route path='products' element={<Products/>}/>
         </Route>
 
         <Route path="*" element={<Pagenotfound/>}/>

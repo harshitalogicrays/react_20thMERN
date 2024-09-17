@@ -8,7 +8,9 @@ const Header = () => {
     {id:3,text:'form demo',url:'/funform'},
     {id:4,text:'form validations',url:'/funform/validation'},
     {id:5,text:'Lifting the state up',url:'/lifting'},
-    {id:6,text:'React hook Form + React Bootstrap',url:'/rhf'}
+    {id:6,text:'React hook Form + React Bootstrap',url:'/rhf'},
+    {id:7,text:"Custom Comp Demo",url:'/custom'},
+    {id:8,text:"Products fetched from  DummyJSON",url:'/products'}
   ]
   return (
     <nav class="navbar navbar-expand-lg bg-dark  navbar-dark">
