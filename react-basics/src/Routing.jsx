@@ -12,6 +12,7 @@ import ParentCounter from './functionalcomponents/ParentCounter'
 import ReactHookFormDemo from './functionalcomponents/ReactHookFormDemo'
 import CustomCompDemo from './functionalcomponents/CustomCompDemo'
 import Products from './functionalcomponents/Products'
+import UseEffectUSeCallbackUseRef from './functionalcomponents/UseEffectUSeCallbackUseRef'
 
 const Routing = () => {
   return (
@@ -28,6 +29,7 @@ const Routing = () => {
             <Route path='rhf' element={<ReactHookFormDemo/>} />
             <Route path='custom' element={<CustomCompDemo/>}/>
             <Route path='products' element={<Products/>}/>
+            <Route path='ecrdemo' element={<UseEffectUSeCallbackUseRef/>}/>
         </Route>
 
         <Route path="*" element={<Pagenotfound/>}/>

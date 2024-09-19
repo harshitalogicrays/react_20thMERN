@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Image1 from '../assets/images/register.png'
 const FormValidations = () => {
+    const focusRef = useRef()
     let [user,setUser] = useState({username:'',email:'',password:'',cpassword:''})
     let [errors,setErrors]=useState({unamerr:'',emailerr:'',pwderr:'',cpwderr:''})
     let handleSubmit=(e)=>{
@@ -40,6 +41,8 @@ const FormValidations = () => {
         }
         else { setErrors((prev)=>({...prev,cpwderr:''}));return true}
     }
+
+    useEffect(()=>{focusRef.current.focus()},[])
   return (
    <div className='container mt-5 shadow p-3'>
     <h1>Form Validations</h1><hr/>
@@ -51,7 +54,7 @@ const FormValidations = () => {
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="" className="form-label">Username</label>
-                    <input type="text" className="form-control" name="username"
+                    <input type="text" className="form-control" name="username" ref={focusRef}
                     value={user.username} onChange={(e)=>setUser({...user,username:e.target.value})} onBlur={checkusername}/>
                     {errors.unamerr && <span className='text-danger'>{errors.unamerr}</span>}
                 </div>

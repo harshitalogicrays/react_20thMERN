@@ -10,7 +10,8 @@ const Header = () => {
     {id:5,text:'Lifting the state up',url:'/lifting'},
     {id:6,text:'React hook Form + React Bootstrap',url:'/rhf'},
     {id:7,text:"Custom Comp Demo",url:'/custom'},
-    {id:8,text:"Products fetched from  DummyJSON",url:'/products'}
+    {id:8,text:"Products fetched from  DummyJSON",url:'/products'},
+    {id:9,text:"useEffect useCallback and useRef",url:'/ecrdemo'},
   ]
   return (
     <nav class="navbar navbar-expand-lg bg-dark  navbar-dark">
