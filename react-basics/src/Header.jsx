@@ -12,7 +12,10 @@ const Header = () => {
     {id:7,text:"Custom Comp Demo",url:'/custom'},
     {id:8,text:"Products fetched from  DummyJSON",url:'/products'},
     {id:9,text:"useEffect useCallback and useRef",url:'/ecrdemo'},
+    {id:10,text:"useMemo Demo",url:'/usememo'},
   ]
+
+ 
   return (
     <nav class="navbar navbar-expand-lg bg-dark  navbar-dark">
     <div class="container-fluid">
@@ -69,6 +72,19 @@ const Header = () => {
               
         
             </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link">
+            <NavLink  to="/classdemo" style={({ isActive}) => {
+            return {
+              fontWeight: isActive ? "bold" : "",
+              color: isActive ? "red" : "gray",
+              textDecoration:'none',
+              backgroundColor:isActive?'yellow':"",
+              fontSize:isActive?'20px':'16px'
+            };
+          }}>classcomponents</NavLink></a>
           </li>
         </ul>
       </div>

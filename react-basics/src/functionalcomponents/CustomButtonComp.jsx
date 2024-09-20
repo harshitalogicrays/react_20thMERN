@@ -9,7 +9,7 @@ const CustomButton = ({type="button",class1="btn btn-primary",children=['Button'
         disabled={disabled}
         onClick={onClick}
         {...props}
-        >{children[0]}</button>
+        >{children}</button>
    </>
   )
 }

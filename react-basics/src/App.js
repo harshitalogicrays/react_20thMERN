@@ -33,9 +33,8 @@ function App() {
       {/* <Form1></Form1> */}
       
       <Header/>
-      <div className='container mt-5'>
+  
          <Outlet/>
-      </div>
     </>
   );
 }

@@ -3,6 +3,9 @@ cache memory -
 code optimize / increase the performance / memoization 
 useCallback - lets you cache a function definition between re-renders.
 useMemo -  lets you cache the result of a calculation between re-renders
+
+
+
 useRef  - lets you reference a value that’s not needed for rendering. (document.getElementByid())
 returns a current property 
 

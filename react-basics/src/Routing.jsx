@@ -13,7 +13,12 @@ import ReactHookFormDemo from './functionalcomponents/ReactHookFormDemo'
 import CustomCompDemo from './functionalcomponents/CustomCompDemo'
 import Products from './functionalcomponents/Products'
 import UseEffectUSeCallbackUseRef from './functionalcomponents/UseEffectUSeCallbackUseRef'
-
+import UseMemeDemo from './functionalcomponents/UseMemeDemo'
+import Firstclasscomp from './classcomponents/Firstclasscomp'
+import EventDemoinfun from './functionalcomponents/EventDemoinfun'
+import Statedemoinclass from './classcomponents/Statedemoinclass'
+import Forminclass from './classcomponents/forminclass'
+import Eventandpropsinclass from './classcomponents/Eventandpropsinclass'
 const Routing = () => {
   return (
   <>
@@ -30,6 +35,13 @@ const Routing = () => {
             <Route path='custom' element={<CustomCompDemo/>}/>
             <Route path='products' element={<Products/>}/>
             <Route path='ecrdemo' element={<UseEffectUSeCallbackUseRef/>}/>
+            <Route path='usememo' element={<UseMemeDemo/>}/>
+
+            <Route path='classdemo' element={<Firstclasscomp/>}>
+                 <Route path='classprops' element={<Eventandpropsinclass username="happy" isActive={true}/>}/>
+                 <Route path='classstate' element={<Statedemoinclass/>}/>
+                 <Route path='classform' element={<Forminclass/>}/>
+            </Route>
         </Route>
 
         <Route path="*" element={<Pagenotfound/>}/>

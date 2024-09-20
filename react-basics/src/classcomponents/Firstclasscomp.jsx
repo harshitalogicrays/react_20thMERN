@@ -11,16 +11,40 @@
 
 // rcc
 import React, { Component, Fragment } from 'react'
+import { Col, Row } from 'react-bootstrap'
+import { NavLink, Outlet } from 'react-router-dom';
 export default class Firstclasscomp extends Component {
+
+   classDropdown =[
+    {id:1,text:'props and event demo',url:'/classdemo/classprops'},
+    {id:2,text:'state demo',url:'/classdemo/classstate'},
+    {id:3,text:'form demo',url:'/classdemo/classform'},
+  ]
   render() {
     // console.log("thekht")
     return (
-      <Fragment>
-           <h1>First class comp</h1>
-           <>
-              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro beatae at vero totam modi fugit exercitationem iste. Exercitationem vitae minima, ab pariatur itaque explicabo officia aliquam quos! Quasi, vitae fugit.</p>
-           </>
-      </Fragment>
+      <Row>
+        <Col xs={3}>
+            <ul class="nav flex-column">
+              {this.classDropdown.map((link,i)=>
+              <li class="nav-item" key={link.id} style={{                        marginBottom:'10px',paddingLeft:'12px'}}>
+                <NavLink  to={link.url} style={({ isActive}) => {
+                      return {
+                        fontWeight: isActive ? "bold" : "",
+                        color: isActive ? "red" : "gray",
+                        textDecoration:'none',
+                        backgroundColor:isActive?'yellow':"",
+                      };
+                    }} end> {link.text}</NavLink>
+              </li>
+              )}
+
+      </ul>
+        </Col>
+        <Col>
+              <Outlet/>
+        </Col>
+      </Row>
     )
   }
 }
