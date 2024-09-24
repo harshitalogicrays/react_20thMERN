@@ -1,0 +1,12 @@
+rconst - constructor 
+==================
+class component life cycle phases -
+1. mounting 
+2. updating 
+3. unmounting 
+4. errot boundary 
+
+practical 
+Pure component 
+HOC - higher order component 
+ref - forwardRef 
