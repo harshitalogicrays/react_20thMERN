@@ -19,6 +19,9 @@ import EventDemoinfun from './functionalcomponents/EventDemoinfun'
 import Statedemoinclass from './classcomponents/Statedemoinclass'
 import Forminclass from './classcomponents/forminclass'
 import Eventandpropsinclass from './classcomponents/Eventandpropsinclass'
+import LifeCyclemethods from './classcomponents/LifeCyclemethods'
+import PureCompDemo from './classcomponents/PureCompDemo'
+import RefDemoinclass from './classcomponents/RefDemoinclass'
 const Routing = () => {
   return (
   <>
@@ -41,6 +44,9 @@ const Routing = () => {
                  <Route path='classprops' element={<Eventandpropsinclass username="happy" isActive={true}/>}/>
                  <Route path='classstate' element={<Statedemoinclass/>}/>
                  <Route path='classform' element={<Forminclass/>}/>
+                 <Route path='lifecycle' element={<LifeCyclemethods/>}/>
+                 <Route path='pure' element={<PureCompDemo/>}/>
+                 <Route path='ref' element={<RefDemoinclass/>}/>
             </Route>
         </Route>
 

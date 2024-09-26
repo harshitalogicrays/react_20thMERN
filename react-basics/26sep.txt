@@ -1,0 +1,21 @@
+class component life cycle phases -
+1. mounting 
+2. updating 
+3. unmounting 
+4. error boundary 
+
+Pure component 
+ref - forwardRef 
+
+=============================================================
+HOC - higher order component 
+
+functionality -> approx similar 
+users 
+products 
+posts 
+todo   
+fetch -> table show 
+
+saturday morning - 8:30 -> HOC 
+new project -> vite and tailwind css 
