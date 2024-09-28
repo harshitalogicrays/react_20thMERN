@@ -1,0 +1,16 @@
+HOC - higher order component 
+
+functionality -> approx similar 
+users 
+products 
+posts 
+todo   
+fetch -> table show 
+
+saturday morning - 8:30 -> HOC 
+new project -> vite and tailwind css 
+
+npm i axios 
+
+axios.get("url")
+axios.post("url",data)

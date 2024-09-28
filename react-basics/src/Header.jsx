@@ -87,6 +87,20 @@ const Header = () => {
           }}>classcomponents</NavLink></a>
           </li>
         </ul>
+        <ul className='navbar-nav mb-2 mb-lg-0'>
+        <li class="nav-item">
+            <a class="nav-link">
+            <NavLink  to="/login" style={({ isActive}) => {
+            return {
+              fontWeight: isActive ? "bold" : "",
+              color: isActive ? "red" : "gray",
+              textDecoration:'none',
+              backgroundColor:isActive?'yellow':"",
+              fontSize:isActive?'20px':'16px'
+            };
+          }}>Login</NavLink></a>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>

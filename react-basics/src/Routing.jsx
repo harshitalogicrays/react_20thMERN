@@ -22,6 +22,7 @@ import Eventandpropsinclass from './classcomponents/Eventandpropsinclass'
 import LifeCyclemethods from './classcomponents/LifeCyclemethods'
 import PureCompDemo from './classcomponents/PureCompDemo'
 import RefDemoinclass from './classcomponents/RefDemoinclass'
+import HOCdemo from './classcomponents/HOCdemo'
 const Routing = () => {
   return (
   <>
@@ -47,6 +48,7 @@ const Routing = () => {
                  <Route path='lifecycle' element={<LifeCyclemethods/>}/>
                  <Route path='pure' element={<PureCompDemo/>}/>
                  <Route path='ref' element={<RefDemoinclass/>}/>
+                 <Route path='hoc' element={<HOCdemo/>}/>
             </Route>
         </Route>
 

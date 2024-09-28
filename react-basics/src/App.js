@@ -9,8 +9,13 @@ import Propsdemo from './functionalcomponents/propsdemo';
 import Form1 from './functionalcomponents/Form1';
 import Header from './Header';
 import { Outlet } from 'react-router-dom';
+import { Toast } from 'react-bootstrap';
+import FetchPosts from './classcomponents/FetchPosts';
 function App() {
   let [val]=useState("1")
+  // const [showA, setShowA] = useState(true);
+
+  // const toggleShowA = () => setShowA(!showA);
   return (
     <>
       {/* <div className="App">
@@ -33,7 +38,13 @@ function App() {
       {/* <Form1></Form1> */}
       
       <Header/>
-  
+      {/* <Toast show={showA} onClose={toggleShowA}>
+          <Toast.Header>
+            <strong className="me-auto">Error </strong>
+            <small>11 mins ago</small>
+          </Toast.Header>
+          <Toast.Body>Woohoo, you're reading this text in a Toast!</Toast.Body>
+        </Toast> */}
          <Outlet/>
     </>
   );

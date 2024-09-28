@@ -22,6 +22,7 @@ export default class Firstclasscomp extends Component {
     {id:4,text:'Lifecycle methods demo',url:'/classdemo/lifecycle'},
     {id:5,text:'pure comp demo',url:'/classdemo/pure'},
     {id:6,text:'ref demo',url:'/classdemo/ref'},
+    {id:7,text:'HOC demo',url:'/classdemo/hoc'},
   ]
   render() {
     // console.log("thekht")
