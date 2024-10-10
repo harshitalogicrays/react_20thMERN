@@ -1,0 +1,22 @@
+fetch - javascript provides it 
+axios  - npm i axios
+local JSON server - json file 
+register -> data stores -> users array 
+
+json server - port by default - 3000
+npx json-server data.json --port 1000 --watch
+
+cors -  cross origin resource sharing 
+frontend - 3000
+backend - 1000  -> allow cors  
+===========================================
+
+login--> check in users json file whether email and password exists or not
+
+logout 
+
+showonlogin showonlogout 
+Add to cart -> functionality -> context -> basics 
+
+theme changer  
+

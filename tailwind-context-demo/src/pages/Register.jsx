@@ -1,7 +1,40 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import axios from 'axios'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const Register = () => {
+  let [user,setUser]=useState({username:'',email:'',password:'',cpassword:''})
+
+  const redirect=useNavigate()
+  
+  const handleUser=async(e)=>{
+    e.preventDefault()
+    if(!user.username || !user.email || !user.password || !user.cpassword){
+      toast.error("please fill the fields")
+    }
+    else if(user.password != user.cpassword){
+      toast.error("password not match")
+    }
+    else{
+     try{
+        // await fetch("http://localhost:1000/users",{
+        //   method:"POST",
+        //   headers:{'content-type':'application/json'},
+        //   body:JSON.stringify({...user,createdAt:new Date()})
+        // })
+
+        await axios.post("http://localhost:1000/users",{...user,createdAt:new Date()}
+        ,{headers:{'content-type':'application/json'}}
+        )
+        toast.success("Registered Successfully")
+        redirect('/login')
+     }
+     catch(err){
+      toast.error(err.message)
+     }
+    }
+  }
   return (
     <>
   <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -11,18 +44,20 @@ const Register = () => {
         </div>
    
         <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleUser}>
           <div> <label htmlFor="username" className="block text-sm font-medium leading-3 text-gray-900"> Username</label>
               <div className="mt-2">
                 <input name="username" type="text"
-                  className="block w-full rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-3"
+                  className="block w-full rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-3" value={user.username}
+                  onChange={(e)=>setUser({...user,username:e.target.value})}
                 />
               </div>
             </div>
             <div> <label htmlFor="email" className="block text-sm font-medium leading-3 text-gray-900">  Email address</label>
               <div className="mt-2">
                 <input name="email" type="text"
-                  className="block w-full rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-3"
+                  className="block w-full rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-3" value={user.email}
+                  onChange={(e)=>setUser({...user,email:e.target.value})}
                 />
               </div>
             </div>
@@ -30,13 +65,16 @@ const Register = () => {
               <div className="mt-2">
                 <input name="password" type="password"
                   className="block w-full rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-3"
+                  value={user.password}
+                  onChange={(e)=>setUser({...user,password:e.target.value})}
                 />
               </div>
             </div>
             <div> <label htmlFor="cpassword" className="block text-sm font-medium leading-3 text-gray-900">Confirm Password</label>
               <div className="mt-2">
                 <input name="cpassword" type="password"
-                  className="block w-full rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-3"
+                  className="block w-full rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-3" value={user.cpassword}
+                  onChange={(e)=>setUser({...user,cpassword:e.target.value})}
                 />
               </div>
             </div>

@@ -1,0 +1,5 @@
+http://localhost:1000/users?email=ram@gmail.com
+
+?email=ram@gmail.com&password=12445 => query String
+
+http://localhost:1000/users/id => id=> query parameter

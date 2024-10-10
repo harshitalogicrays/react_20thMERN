@@ -1,7 +1,30 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const Login = () => {
+  const navigate = useNavigate()
+  let [email,setEmail]=useState('')
+  let [password,setPassword]=useState('')
+  const handleSubmit=async(e)=>{
+    e.preventDefault()
+    if(!email || !password){toast.error("please fill fields");return}
+    try{
+     const res =  await fetch(`http://localhost:1000/users?email=${email}`)
+     const data = await res.json()
+     if(data.length==0){toast.error("Invalid credentails")}
+     else if(data[0].password == password){
+      let obj= {isLoggedIn:true,email:data[0].email,name:data[0].username}
+      sessionStorage.setItem("20thjunmini",JSON.stringify(obj))
+      toast.success("loggedIn successfully")
+        navigate('/')
+     }  
+     else toast.error("Invalid credentails")
+    }
+    catch(error){
+      toast.error(error.message)
+    }
+  }
   return (
   <>
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -11,18 +34,19 @@ const Login = () => {
         </div>
    
         <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
            <div> <label htmlFor="email" className="block text-sm font-medium leading-3 text-gray-900">  Email address</label>
               <div className="mt-2">
                 <input name="email" type="text"
                   className="block w-full rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-3"
-                />
+                value={email} onChange={(e)=>setEmail(e.target.value)}/>
               </div>
             </div>
             <div> <label htmlFor="password" className="block text-sm font-medium leading-3 text-gray-900"> Password</label>
               <div className="mt-2">
                 <input name="password" type="password"
                   className="block w-full rounded-md border-0 py-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-3"
+                  value={password} onChange={(e)=>setPassword(e.target.value)}
                 />
               </div>
             </div>

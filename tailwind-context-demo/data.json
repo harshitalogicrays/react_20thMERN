@@ -1,0 +1,23 @@
+{
+  "users": [
+    {
+      "id": "0b45",
+      "username": "Ram",
+      "email": "ram@gmail.com",
+      "password": "ram123",
+      "cpassword": "ram123",
+      "createdAt": "2024-10-05T05:42:36.754Z"
+    },
+    {
+      "id": "ca30",
+      "username": "happy",
+      "email": "happy@gmail.com",
+      "password": "HAPPY123",
+      "cpassword": "HAPPY123",
+      "createdAt": "2024-10-05T05:48:34.938Z"
+    }
+  ],
+  "cart": [],
+  "products": [],
+  "orders": []
+}
