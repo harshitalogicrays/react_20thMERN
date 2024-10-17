@@ -7,7 +7,10 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import {BsLock} from 'react-icons/bs'
 import { toast } from 'react-toastify'
 import { ShowOnLogin, ShowOnLogout } from './misc'
+import { ContextCart } from './CartContext'
+import ThemBtn from './ThemBtn'
 const Header = () => {
+  const data= ContextCart()
   const navigate = useNavigate()
     const navigation = [
         {id:1, name: 'Home', href: '/'},
@@ -61,12 +64,13 @@ const Header = () => {
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center  sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <ThemBtn/>
             <NavLink to='/cart'
               type="button"
-              className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+              className="relative rounded-full ms-8 bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
               <span className="absolute -inset-1.5" />
               <FaShoppingCart aria-hidden="true" className="h-8 w-8" />
-              <span className="absolute -top-1 -right-2 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-600 rounded-full ">0</span>
+              <span className="absolute -top-1 -right-2 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-600 rounded-full ">{data?.cartItems.length ?? 0}</span>
            
             </NavLink>
             <div className="hidden sm:ml-6 sm:block">

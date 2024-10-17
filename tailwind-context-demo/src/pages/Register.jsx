@@ -2,19 +2,23 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import Loader from '../features/Loader'
 
 const Register = () => {
   let [user,setUser]=useState({username:'',email:'',password:'',cpassword:''})
+  let [isLoading,setIsLoading] = useState(false)
 
   const redirect=useNavigate()
   
   const handleUser=async(e)=>{
     e.preventDefault()
+    setIsLoading(true)
     if(!user.username || !user.email || !user.password || !user.cpassword){
       toast.error("please fill the fields")
+      setIsLoading(false)
     }
     else if(user.password != user.cpassword){
-      toast.error("password not match")
+      toast.error("password not match"); setIsLoading(false)
     }
     else{
      try{
@@ -29,14 +33,18 @@ const Register = () => {
         )
         toast.success("Registered Successfully")
         redirect('/login')
+        setIsLoading(false)
      }
      catch(err){
       toast.error(err.message)
+      setIsLoading(false)
      }
     }
+
   }
   return (
     <>
+    {isLoading && <Loader/>}
   <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-10 text-center text-4xl font-bold leading-9 tracking-tight text-gray-900 mb-3">Register Here</h2>

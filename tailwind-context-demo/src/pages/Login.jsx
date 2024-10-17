@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 const Login = () => {
+  const location =useLocation()
+  console.log(location)
   const navigate = useNavigate()
   let [email,setEmail]=useState('')
   let [password,setPassword]=useState('')
@@ -17,7 +19,9 @@ const Login = () => {
       let obj= {isLoggedIn:true,email:data[0].email,name:data[0].username}
       sessionStorage.setItem("20thjunmini",JSON.stringify(obj))
       toast.success("loggedIn successfully")
-        navigate('/')
+        // navigate('/')
+        const redirectURL =  location.state!=null ? location.state.from : '/'
+        navigate(redirectURL)
      }  
      else toast.error("Invalid credentails")
     }
