@@ -1,0 +1,58 @@
+context - React 16 
+state mgmt - ex - isLoggedIn ,email
+we can decide the Provider.
+more than one context
+nested context
+
+3rd party tools - application level state mgmt.
+flux - 
+redux  -  
+redux toolkit -
+root comp. will be the provider 
+in one app only one store 
+
+unidirectional 
+
+
+redux - predictable state container for JS applications.
+npm i redux 
+
+@reduxjs/toolkit - npm i @reduxjs/toolkit
+react binding -> npm i react-redux 
+
+terminlogies -
+1. store - (where all app state resides)
+2. action (event)
+3. reducer - (pure functions)
+4. state (data )
+5. view (react app)
+
+view ---> action -----> reducer ------> store (state)
+
+store----> view 
+
+=================================
+Soda Shop 
+soda/icecream/lassi/mocktails  -> state
+counter /shelf -> store
+shopkeeper  -  reducer
+customer - view 
+BUY -  action 
+
+customer --------> BUY------>shopkeeper--------------> shelf (soda ,icecream,lassi,mocktails)
+(view)         (Action)       reducer (function)           store (state)
+
+shelf------------> customer 
+      select
+
+Dealer -------> SELL ----> shopkeeper--------> shelf 
+(view)        action        reducer             store 
+
+Action Dispatch  - useDispatch() hook (react-redux)
+select -> useSelector() hook (React-redux)
+
+Single Source of Truth (only one store in one application)
+
+Slices -> 1 slice - soda , 1slice-icecream ,  1slice- lassi , 1slice-mocktails
+
+slice -> reducer functions 
