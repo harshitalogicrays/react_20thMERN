@@ -1,0 +1,22 @@
+to dispatch action - useDispatch hook
+
+store--> view => useSelector hook
+
+To API Call -
+1. custom middleware
+2. redux saga (deprecated)
+3. asyncthunk 
+4. RTK query (redux toolkit query) 
+
+====================================================================
+reduxjs toolkit 
+bootstrap + chakra UI 
+local json-server
+
+pagination 
+filter
+search 
+add to cart 
+order 
+payment 
+email 
