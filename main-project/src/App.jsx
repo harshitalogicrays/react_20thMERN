@@ -5,6 +5,7 @@ import Header from "./features/Header";
 
 function App() {
 
+  // console.log(import.meta.env.VITE_BASE_URL)
   return (
   <>
  <ToastContainer position="bottom-left" autoClose={2000} hideProgressBar={true}

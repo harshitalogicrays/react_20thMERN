@@ -1,15 +1,36 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Image1 from '/src/assets/images/register.png'
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
+import Loader from '../features/Loader'
 const Register = () => {
+    const navigate = useNavigate()
     const focusRef = useRef()
-    let [user,setUser] = useState({username:'',email:'',password:'',cpassword:''})
+    let [isLoading,setIsLoading]=useState(false)
+    let [user,setUser] = useState({username:'',email:'',password:'',cpassword:'',role:'1'})
     let [errors,setErrors]=useState({unamerr:'',emailerr:'',pwderr:'',cpwderr:''})
-    let handleSubmit=(e)=>{
+    let handleSubmit=async(e)=>{
+        e.preventDefault()
+        setIsLoading(true)
         let res1 = checkusername()
         let res2 = checkemail()
         let res3 = checkpwd()
         let res4 = checkcpwd()
-        if(res1 && res2 && res3 && res4) alert(JSON.stringify(user))
+        if(res1 && res2 && res3 && res4){
+            try{
+               const res =  await fetch(`${import.meta.env.VITE_BASE_URL}/users`,{
+                    method:"POST",
+                    headers:{'content-type':'application/json'},
+                    body:JSON.stringify({...user,createdAt:new Date()})
+                })
+                const data =  await res.json()
+                console.log(data)
+                toast.success("registered successfully")
+                navigate('/login')
+                setIsLoading(false)
+            }
+            catch(err){toast.error(err.message);setIsLoading(false)}
+        }
         else e.preventDefault()
     }
     let checkusername=()=>{
@@ -45,6 +66,7 @@ const Register = () => {
     useEffect(()=>{focusRef.current.focus()},[])
   return (
    <div className='container mt-5 shadow p-3'>
+    {isLoading && <Loader/>}
     <h1>Form Validations</h1><hr/>
     <div className="row">
         <div className="col">
