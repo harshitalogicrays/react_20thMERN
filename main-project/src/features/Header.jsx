@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { LOGOUT_USER, selectIsLoggedIn, selectUserName } from '../redux/authSlice'
 import { toast } from 'react-toastify'
-import { ShowonLogin, Showonlogout } from './hiddenlinks'
+import { ShowonLogin, Showonlogout } from './hiddenlinks.jsx'
 
 const Header = () => {
   const [username,setUsername] =useState('')
