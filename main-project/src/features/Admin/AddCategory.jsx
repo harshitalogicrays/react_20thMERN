@@ -6,8 +6,33 @@ import { toast } from 'react-toastify'
 const AddCategory = () => {
   const navigate = useNavigate()
   const [category,setCategory] =useState({name:'',desc:'',image:''})
-  const handleImage=(e)=>{}
+
+  const [picLoading,setPicLoading]=useState(false)
+  const handleImage=async(e)=>{
+    // console.log(e.target.files[0])
+    let img = e.target.files[0]
+    setPicLoading(true)
+    if(img==undefined){toast.error("please select an image")}
+    if(img.type=='image/jpg' || img.type=='image/jpeg'|| img.type=='image/jfif' ||img.type=='image/png' || img.type=='image/gif' || img.type=='image/webp'){
+      const data = new FormData()
+      data.append("file",img)
+      data.append("upload_preset","menswear")
+      data.append('cloud_name','harshitalogicraysacademy')
+      try{
+       const res =  await axios.post("https://api.cloudinary.com/v1_1/harshitalogicraysacademy/image/upload",data)
+        console.log(res.data.url)
+        setCategory({...category,image:res.data.url})
+        setPicLoading(false)
+      }
+      catch(err){
+        toast.error(err.message)
+        setPicLoading(false)
+      }
+    }
+
+  }
   const handleSubmit=async(e)=>{
+    e.preventDefault()
     if(!category.name || !category.desc || !category.image){
       toast.error("please fill all the fields")
     }
@@ -21,7 +46,7 @@ const AddCategory = () => {
     }
   }
   return (
-  <>
+  <div className='container col-8 mt-3 p-2 shadow'>
     <h1>Add Category</h1>
     <form onSubmit={handleSubmit}>
       <div class="mb-3">
@@ -31,17 +56,24 @@ const AddCategory = () => {
       </div>
       <div class="mb-3">
         <label for="" class="form-label">Image</label>
-        <input type="file"  name="image"  class="form-control" onChange={handleImage}/>
+        <input type="file"    class="form-control" name="pic" accept='image/*'
+            onChange={handleImage}/>
       </div>
       <div class="mb-3">
         <label for="" class="form-label">desc</label>
         <textarea type="text"  name="desc"  class="form-control" value={category.desc} 
         onChange={(e)=>setCategory({...category,desc:e.target.value})}></textarea>
       </div>
-      <button type="submit" class="btn btn-primary"> Submit </button>
-      
+      <div className="d-grid gap-3">
+      <button type="submit" class="btn btn-primary"> 
+        {picLoading ? <div class="d-flex justify-content-center">
+                      <div class="spinner-border" role="status">
+                      </div>
+                    </div>  : "Submit"}
+        </button>
+        </div>
     </form>
-  </>
+  </div>
   )
 }
 

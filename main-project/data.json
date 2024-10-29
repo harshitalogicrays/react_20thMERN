@@ -19,7 +19,22 @@
       "createdAt": "2024-10-24T04:11:17.510Z"
     }
   ],
-  "categories": [],
+  "categories": [
+    {
+      "id": "a4c3",
+      "name": "Shirts",
+      "desc": "ewqeqeqeq",
+      "image": "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1730175843/emv9rudgbuimtugon4il.png",
+      "createdAt": "2024-10-29T04:24:10.515Z"
+    },
+    {
+      "id": "6463",
+      "name": "T Shirts",
+      "desc": "erwrwrwrwrwrw",
+      "image": "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1730175926/wjz4sxfcsxevfzwfnobx.png",
+      "createdAt": "2024-10-29T04:25:31.745Z"
+    }
+  ],
   "products": [],
   "orders": []
 }
