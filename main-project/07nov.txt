@@ -1,0 +1,16 @@
+http://localhost:1000/users/10 => 10 => query parameter (mostly id)
+
+http://localhost:1000/users?email=ram@gmail.com&pwd=12344 =>
+email=ram@gmail.com&pwd=12344 => query string 
+
+Product -
+name
+brand 
+images 
+sizes 
+colors
+price 
+desc 
+category
+stock 
+tag 

@@ -3,6 +3,8 @@ import { BsPencilSquare, BsTrash } from 'react-icons/bs'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import { fetchCategories, selectCategories, selectError, selectStatus } from '../../redux/categorySlice'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const ViewCategory = () => {
   const dispatch = useDispatch()
@@ -10,6 +12,17 @@ const ViewCategory = () => {
   const categories  = useSelector(selectCategories)
   const status = useSelector(selectStatus)
   const error = useSelector(selectError)
+
+  let handleDelete=async(id)=>{
+    if(window.confirm('are you sure to delete this??')){
+      try{
+        await axios.delete(`${import.meta.env.VITE_BASE_URL}/categories/${id}`)
+        toast.success("category deleted")
+        window.location.reload()
+      }
+      catch(err){toast.error(err.message)}
+    }
+  }
   return ( <div> <h1 className='text-center'>Categories</h1><hr/>
         <div  class="table-responsive" >
           <table class="table table-bordered table-striped table-hover"   >
@@ -34,8 +47,10 @@ const ViewCategory = () => {
                   <td><img src={c.image} height={50} width={50}/></td>
                   <td>{c.desc}</td>
                   <td>
-                    <button type="button" class="btn btn-success me-2"><BsPencilSquare/></button>
-                    <button type="button" class="btn btn-danger"><BsTrash/></button>
+                    <Link type="button" class="btn btn-success me-2" 
+                    to={`/admin/category/edit/${c.id}`}><BsPencilSquare/></Link>
+                    <button type="button" class="btn btn-danger" 
+                    onClick={()=>handleDelete(c.id)}><BsTrash/></button>
                   </td>
                 </tr>)}</>
                 }

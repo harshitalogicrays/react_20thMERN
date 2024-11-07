@@ -19,17 +19,18 @@ const router = createBrowserRouter([
             {path:'',element:<Home/>},
             {path:'register',element:<Register/>},
             {path:'login',element:<Login/>},
-            {path:'admin',element:<AdminLayout/>,
-                children:[
-                    {path:'',element:<Dashboard/>},
-                    {path:'category/add',element:<AddCategory/>},
-                    {path:'category/view',element:<ViewCategory/>},
-                    {path:'item/add',element:<AddItem/>},
-                    {path:'item/view',element:<ViewItems/>},
-                    {path:'orders',element:<Orders/>},
-                    {path:'order/details/:id',element:<OrderDetails/>},
-                ]
-            },
+        ]
+    },
+    {path:'admin',element:<AdminLayout/>,
+        children:[
+            {path:'',element:<Dashboard/>},
+            {path:'category/add',element:<AddCategory/>},
+            {path:'category/view',element:<ViewCategory/>},
+            {path:'category/edit/:cid',element:<AddCategory/>},
+            {path:'item/add',element:<AddItem/>},
+            {path:'item/view',element:<ViewItems/>},
+            {path:'orders',element:<Orders/>},
+            {path:'order/details/:id',element:<OrderDetails/>},
         ]
     },
    
