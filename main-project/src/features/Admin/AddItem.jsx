@@ -1,6 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCategories, selectCategories } from '../../redux/categorySlice'
+import { toast } from 'react-toastify'
+import axios from 'axios'
+import { useNavigate, useParams } from 'react-router-dom'
+import { selectItems } from '../../redux/itemSlice'
 
 const AddItem = () => {
   let initialData = {name:'',brand:'',category:'',price:'',stock:'',sizes:[],colors:[],images:[],desc:''}
@@ -9,37 +13,80 @@ const AddItem = () => {
   let [allsizes,setSizes] = useState([])
   let [allcolors,setColors]=useState([])
   let [pics,setPics] = useState([])
+  const [picLoading,setPicLoading]=useState(false)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   useEffect(()=>{dispatch(fetchCategories())},[])
   const categories  = useSelector(selectCategories)
   const colorsArr = ['red','green','blue','gray','white','black','pink','lightblue','yellow','brown','purple','cream','aqua','sliver']
 
-  const handleSizes=(val)=>{console.log(val);setSizes((prev)=>[...prev,val])}
-  const handleColors=(val)=>{setColors((prev)=>[...prev,val])}
+  //edit 
+  const {id} =useParams()
+  const allitems = useSelector(selectItems)
+  const itemEdit = allitems.find((item)=>item.id==id)
+  useEffect(()=>{
+    if(id){
+      setItem({...itemEdit});setSizes(itemEdit.sizes);
+      setColors(itemEdit.colors);setPics(itemEdit.images) }
+    else {
+      setItem({...initialData}); setSizes([]);setColors([]);setPics([])  } },[id])
+
+  const handleSizes = (e) => {
+    const s = Array.from(e.target.selectedOptions).map(opt=>opt.value)
+    setItem({...item,sizes:s}) }
+
+  const handleColors = (e) => {
+    const c = Array.from(e.target.selectedOptions).map(opt=>opt.value)
+    setItem({...item,colors:c})}
+
   const handleImage=async(e)=>{
-    let img = e.target.files[0]
-    if(img==undefined){toast.error("please select an image")}
-    if(img.type=='image/jpg' || img.type=='image/jpeg'|| img.type=='image/jfif' ||img.type=='image/png' || img.type=='image/gif' || img.type=='image/webp'){
-      const data = new FormData()
-      data.append("file",img)
-      data.append("upload_preset","menswear")
-      data.append('cloud_name','harshitalogicraysacademy')
+    let imgs = Array.from(e.target.files)
+    if(imgs.length==0){return}
+    const uploadURLs=[]
+    for(let img of imgs){
+      setPicLoading(true)
+      if(['image/jpg','image/jpeg','image/jfif','image/png','image/gif','image/webp'].includes(img.type)){
+        const data = new FormData()
+        data.append("file",img)
+        data.append("upload_preset","menswear")
+        data.append('cloud_name','harshitalogicraysacademy')
+        data.append('folder','items')
+        try{
+         const res =  await fetch("https://api.cloudinary.com/v1_1/harshitalogicraysacademy/image/upload",{method:"POST",body:data})
+          const data1 = await res.json()
+          console.log(data1.url)
+          uploadURLs.push(data1.url)
+          setPicLoading(false)}
+        catch(err){
+          toast.error(err.message);  setPicLoading(false)
+        } }
+    }
+    setPics(prevImg => [...prevImg,...uploadURLs])
+  }
+
+  const handleSubmit = async(e)=>{
+    e.preventDefault()
+    if(!id){
       try{
-       const res =  await axios.post("https://api.cloudinary.com/v1_1/harshitalogicraysacademy/image/upload",data)
-        console.log(res.data.url)
-      
+        await axios.post(`${import.meta.env.VITE_BASE_URL}/products`,{...item,images:pics,createdAt:new Date()})
+        toast.success("item added")
+        navigate('/admin/item/view')
       }
-      catch(err){
-        toast.error(err.message)
+      catch(err){toast.error(err.message)}
+    }
+    else {
+      try{
+        await axios.put(`${import.meta.env.VITE_BASE_URL}/products/${id}`,{...item,images:pics,createdAt:item.createdAt,editedAt:new Date()})
+        toast.success("item updated")
+        navigate('/admin/item/view')
       }
+      catch(err){toast.error(err.message)}
     }
 
   }
-  const handleSubmit = (e)=>{
-    e.preventDefault()
-    setItem({...item,sizes:allsizes,colors:allcolors,images:pics})
-    alert(JSON.stringify(item))
 
+  const removeImage=(ind)=>{
+    setPics(prevImg =>prevImg.filter((_,i)=>i!=ind))
   }
   return (
     <div className='container p-3 shadow'>
@@ -81,39 +128,49 @@ const AddItem = () => {
           <div className="row">
           <div class="col mb-3">
             <label for="" class="form-label">Sizes</label>
-            <select class="form-select" name="sizes" multiple onChange={(e)=>handleSizes(e)}>
-              <option value="" selected disabled>Select one</option>
-              <option>xs</option><option>s</option><option>m</option>
-              <option>l</option><option>xl</option><option>xxl</option>
+            <select class="form-select" name="sizes" multiple onChange={handleSizes}>
+              <option value="" disabled>Select one</option>
+              {["xs","s","m","l","xl","xxl"].map((s,i)=><option key={i} selected={allsizes.includes(s)}>{s}</option>)}
             </select>
           </div>
           <div class="col mb-3">
             <label for="" class="form-label">Colors</label>
-            <select class="form-select" name="colors" multiple             onChange={(e)=>handleColors(e.target.value)}>
-              <option value="" selected disabled>Select one</option>
-              {colorsArr.map((c,i)=><option key={i}>{c}</option>)}
+            <select class="form-select" name="colors" multiple onChange={handleColors}>
+              <option value="" disabled>Select one</option>
+              {colorsArr.map((c,i)=><option key={i} selected={allcolors.includes(c)}>{c}</option>)}
             </select>
           </div>
           </div>
           <div class="mb-3">
             <label for="" class="form-label">Choose file</label>
-            <input type="file" class="form-control"  name="pics" multiple/>
+            <input type="file" class="form-control"  name="pics" multiple onChange={handleImage}/>
           </div>
+          {id && <>
+            {pics.length !=0 && <>
+                  {pics.map((pic,i)=><div key={i} style={{display:'inline-block',marginRight:'20px',position:'relative'}}>
+                      <img src={pic} height={80} width={80}/>
+                      <span style={{position:'absolute',top:'0',right:'0',background:'red',color:'white',padding:'1px 5px',borderRadius:'5px','cursor':'pointer'}} onClick={()=>removeImage(i)}>X</span>
+                  </div>)}
+            </>}
+          </>}
           <div class="mb-3">
             <label for="" class="form-label">desc</label>
             <textarea type="text"  name="desc"  class="form-control" value={item.desc}
             onChange={(e)=>setItem({...item,desc:e.target.value})}></textarea>
          </div>
-         <button
-          type="submit"
-          class="btn btn-primary"
-         >
-          Submit
-         </button>
-         
+         <div className="d-grid gap-3">
+         <button type="submit" class="btn btn-primary"> 
+        {picLoading ? <div class="d-flex justify-content-center">
+                      <div class="spinner-border" role="status">
+                      </div>
+                    </div>  : "Submit"}
+        </button>
+         </div>
         </form>
     </div>
   )
 }
 
 export default AddItem
+
+

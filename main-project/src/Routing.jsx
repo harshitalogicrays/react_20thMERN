@@ -29,6 +29,7 @@ const router = createBrowserRouter([
             {path:'category/edit/:cid',element:<AddCategory/>},
             {path:'item/add',element:<AddItem/>},
             {path:'item/view',element:<ViewItems/>},
+            {path:'item/edit/:id',element:<AddItem/>},
             {path:'orders',element:<Orders/>},
             {path:'order/details/:id',element:<OrderDetails/>},
         ]

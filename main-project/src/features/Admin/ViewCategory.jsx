@@ -23,7 +23,8 @@ const ViewCategory = () => {
       catch(err){toast.error(err.message)}
     }
   }
-  return ( <div> <h1 className='text-center'>Categories</h1><hr/>
+  return ( 
+  <div> <h1 className='text-center'>Categories</h1><hr/>
         <div  class="table-responsive" >
           <table class="table table-bordered table-striped table-hover"   >
             <thead>

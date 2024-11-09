@@ -48,8 +48,72 @@
       "image": "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1730953060/cbchghwhmf8jkd5ywxju.png",
       "createdAt": "2024-11-07T04:02:18.359Z",
       "editedAt": "2024-11-07T04:17:48.365Z"
+    },
+    {
+      "id": "d0f8",
+      "name": "aaa",
+      "desc": "wrewqrqrqwsrwqrqrqrqrq",
+      "image": "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731041997/categories/eczzx7leirl9oxi612bv.png",
+      "public_id": "categories/eczzx7leirl9oxi612bv",
+      "createdAt": "2024-11-08T04:59:59.196Z",
+      "editedAt": "2024-11-08T05:02:09.667Z"
     }
   ],
-  "products": [],
+  "products": [
+    {
+      "id": "3156",
+      "name": "werwrwrwr",
+      "brand": "aaa",
+      "category": "Shirts",
+      "price": "1111",
+      "stock": "11",
+      "sizes": [
+        "xs",
+        "s",
+        "m"
+      ],
+      "colors": [
+        "red",
+        "green",
+        "blue"
+      ],
+      "images": [
+        "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124833/items/b6igsbtjnuy2xritcq9v.jpg",
+        "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124833/items/ajnivp6vvckkzafuceaw.jpg",
+        "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731127221/items/qvaxtvd7vkscyswjzgw3.jpg",
+        "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731127222/items/apcaall2essgoywf0n8h.jpg"
+      ],
+      "desc": "rqrqrqrqrqrqr",
+      "createdAt": "2024-11-09T04:00:41.155Z",
+      "editedAt": "2024-11-09T04:40:51.355Z"
+    },
+    {
+      "id": "bce4",
+      "name": "qe",
+      "brand": "qeq1",
+      "category": "wr",
+      "price": "111",
+      "stock": "11",
+      "sizes": [
+        "xs",
+        "s",
+        "m",
+        "xl"
+      ],
+      "colors": [
+        "cream",
+        "aqua",
+        "sliver"
+      ],
+      "images": [
+        "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124941/items/emvnyl6islv1wf4dsaip.jpg",
+        "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124943/items/h7aiyv4dmlebogdl674e.png",
+        "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124946/items/usemp0rilm7ufxpzhdr0.jpg",
+        "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124949/items/fpjlt65afqydnica5udo.jpg"
+      ],
+      "desc": "ddsdwewwrwrwrw",
+      "createdAt": "2024-11-09T04:02:32.131Z"
+    }
+  ],
   "orders": []
 }
