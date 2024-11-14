@@ -12,6 +12,8 @@ import AddItem from "./features/Admin/AddItem";
 import ViewItems from "./features/Admin/ViewItems";
 import Orders from "./features/Admin/Orders";
 import OrderDetails from "./features/Admin/OrderDetails";
+import Contact from "./features/Contact";
+import Products from "./features/Products";
 
 const router = createBrowserRouter([
     {path:'/',element:<App/>,
@@ -19,6 +21,8 @@ const router = createBrowserRouter([
             {path:'',element:<Home/>},
             {path:'register',element:<Register/>},
             {path:'login',element:<Login/>},
+            {path:'contact',element:<Contact/>},
+            {path:'category/:name',element:<Products/>},
         ]
     },
     {path:'admin',element:<AdminLayout/>,
