@@ -1,10 +1,14 @@
 import React from 'react'
+import ImageCarousel from '../features/ImageCarousel'
+import Products from '../features/Products'
 
 const Home = () => {
   return (
-    <div>
-      <h1>Home Page</h1>
-    </div>
+  <>
+    <ImageCarousel/>
+    <br/>
+    <Products/>
+  </> 
   )
 }
 

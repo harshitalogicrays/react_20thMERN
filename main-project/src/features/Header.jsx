@@ -14,7 +14,7 @@ import {
 import { HamburgerIcon } from '@chakra-ui/icons'
 import { fetchCategories, selectCategories } from '../redux/categorySlice.js'
 
-const Header = () => {
+const Header = ({setSideBarOpen}) => {
   const [username, setUsername] = useState('')
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -31,6 +31,7 @@ const Header = () => {
 
   
   const { isOpen, onOpen, onClose } = useDisclosure()
+
   const [categoryVisible,setCategoryVisible]=useState(false)
   const [uniqueCategories,setUniqueCategories] = useState([])
   useEffect(()=>{dispatch(fetchCategories())},[])
@@ -38,10 +39,11 @@ const Header = () => {
   useEffect(()=>{
       const data = [...new Set(categories.map(item=>item.name))]
       setUniqueCategories(data)
-  },[uniqueCategories])
+  },[])
 
   const handleNavigate = (url) => {
-    onClose()
+    onClose();
+    setSideBarOpen(false)
     return navigate(url)
   }
   return (
@@ -49,13 +51,13 @@ const Header = () => {
       <Box>
         <Flex bg="black" p={2} align="center" justify="space-between" transition="all 0.3s ease">
           <HStack spacing={8} align="center">
-            <IconButton icon={<HamburgerIcon />} onClick={onOpen}></IconButton>
+            <IconButton icon={<HamburgerIcon />} onClick={()=>{onOpen();setSideBarOpen(true)}}></IconButton>
           </HStack>
           <Text color="white" fontSize="2xl">Men's Wear</Text>
           <HStack spacing={1}>
             <Showonlogout>
             <Button colorScheme='black' onClick={() => handleNavigate('/login')}>Login</Button>
-            <Button colorScheme='black' onClick={() => handleNavigate('/register')}>Rgister</Button>
+            <Button colorScheme='black' onClick={() => handleNavigate('/register')}>Register</Button>
             </Showonlogout>
             <ShowonLogin>
             <Button colorScheme='black'>Welcome {username}</Button>
@@ -64,7 +66,7 @@ const Header = () => {
           </HStack>
         </Flex>
 
-        <Drawer isOpen={isOpen}  placement='left' onClose={onClose} >
+        <Drawer isOpen={isOpen}  placement='left' onClose={()=>{onClose();setSideBarOpen(false)}} >
           <DrawerOverlay />
           <DrawerContent> <DrawerCloseButton />
             <DrawerHeader>Men's Wear</DrawerHeader>
