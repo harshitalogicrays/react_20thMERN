@@ -6,13 +6,14 @@ import { toast } from 'react-toastify'
 import { ShowonLogin, Showonlogout } from './hiddenlinks.jsx'
 import {
   Box, Button, Flex, HStack, IconButton, Text, useDisclosure, Drawer,
-  DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton,
+  DrawerBody,  DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton,
+  VStack,Link,
   Input,
-  VStack,
-  Link
-} from '@chakra-ui/react'
+  Badge} from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
 import { fetchCategories, selectCategories } from '../redux/categorySlice.js'
+import { FaShoppingCart } from 'react-icons/fa'
+
 
 const Header = ({setSideBarOpen}) => {
   const [username, setUsername] = useState('')
@@ -39,7 +40,7 @@ const Header = ({setSideBarOpen}) => {
   useEffect(()=>{
       const data = [...new Set(categories.map(item=>item.name))]
       setUniqueCategories(data)
-  },[])
+  },[categories])
 
   const handleNavigate = (url) => {
     onClose();
@@ -54,7 +55,12 @@ const Header = ({setSideBarOpen}) => {
             <IconButton icon={<HamburgerIcon />} onClick={()=>{onOpen();setSideBarOpen(true)}}></IconButton>
           </HStack>
           <Text color="white" fontSize="2xl">Men's Wear</Text>
-          <HStack spacing={1}>
+          <HStack spacing={4} align="center">
+            <Input placeholder='search here' bg="white"/>
+            <IconButton icon={<FaShoppingCart style={{fontSize:'1.5rem'}}/>}
+            colorScheme='black' onClick={() => handleNavigate('/cart')}></IconButton>
+            <Badge colorScheme='red' borderRadius="full" 
+            position="relative" left="-20px" top='-10px'>0</Badge>
             <Showonlogout>
             <Button colorScheme='black' onClick={() => handleNavigate('/login')}>Login</Button>
             <Button colorScheme='black' onClick={() => handleNavigate('/register')}>Register</Button>

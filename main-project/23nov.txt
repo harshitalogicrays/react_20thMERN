@@ -1,0 +1,17 @@
+productdetails page - 
+pagination  - bootstrap 
+
+{`/items/details/${item.id}`}
+
+
+cartSlice 
+cart page 
+search products  - tuesday 
+wednesday -checkoutpage -> nodejs payment gateway integration
+order -> admin ->order status update -> mail (nodejs ) 
+myorders 
+deploy  -> 2 server - json server and nodejs server 
+
+
+ 
+

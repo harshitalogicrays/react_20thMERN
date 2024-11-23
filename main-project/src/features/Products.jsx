@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectItems, STORE_ITEMS } from '../redux/itemSlice'
 import ProductCard from './ProductCard'
+import { useParams } from 'react-router-dom'
 
 const Products = () => {
   const dispatch = useDispatch()
@@ -13,10 +14,16 @@ const Products = () => {
     }
     catch(err){console.log(err)}
   }
-
   useEffect(()=>{getData()},[])
 
-  const items = useSelector(selectItems)
+  const allitems = useSelector(selectItems)
+  const [items,setItems] =useState(allitems)
+  const {name} =useParams()
+  const itembycat = allitems.filter(item=>item.category==name)
+  useEffect(()=>{
+      if(name)setItems(itembycat)
+      else setItems(allitems)
+  },[name])
   return (
    <div className="container mt-5">
       <ProductCard items={items}/>
