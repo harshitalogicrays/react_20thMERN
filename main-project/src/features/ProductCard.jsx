@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import { addtocart } from '../redux/cartSlice'
+import ReactPaginate from 'react-paginate'
+import { Link } from 'react-router-dom'
+import { selectIsLoggedIn } from '../redux/authSlice'
 
 const ProductCard = ({ items }) => {
     const dispatch  =useDispatch()
+    const isLoggedIn = useSelector(selectIsLoggedIn)
     const [selectedOptions,setSelectedOptions] = useState({})
     const handleSize = (size,id)=>{
         setSelectedOptions(prev =>({...prev,[id]:{...prev[id],selectedSize:size}}))
@@ -19,20 +23,38 @@ const ProductCard = ({ items }) => {
             toast.error("please select size and color");return
         }
         else {
-            // console.log({item,size:s,color:c})
-            dispatch(addtocart({item,size:s,color:c}))
+                dispatch(addtocart({id:item.id,name:item.name,brand:item.brand,category:item.category,price:item.price,stock:item.stock,size:s,color:c,images:item.images}))
+            window.scrollTo(0,0)
         }
     }
+
+    let itemsPerPage=2
+    const [itemOffset, setItemOffset] = useState(0);
+    const [pageCount,setPageCount]=useState(0)
+    const [currentItems,setCurrentItems]=useState([]) 
+
+    const handlePageClick = (event) => {
+        const newOffset = (event.selected * itemsPerPage) % items.length;
+        setItemOffset(newOffset);
+      };
+    useEffect(()=>{
+        const endOffset = itemOffset + itemsPerPage; //0+10 =>10
+        setCurrentItems(items.slice(itemOffset,endOffset)) //0,10 => 10 execulde (0 to 9)
+        setPageCount(Math.ceil(items.length / itemsPerPage)) 
+    },[itemOffset,items])
     return (
         <>
             <div className="row">
             {items.length === 0 && <h1>No Item Found</h1>}
-                {items.map((item, i) => 
+                {currentItems.map((item, i) => 
                     <div className="col-3" key={i}>
+                       
                         <div className="card mb-4 shadow-sm">
+                      
                             {item.images.length === 0 && <img src="" alt="No images available" />}
                             {item.images.length > 0 && (
                                 <div className="image-container">
+                                    <Link to={`/product/${item.id}`}>
                                     <div id={`carouselExample-${i}`} className="carousel slide">
                                         <div className="carousel-inner">
                                             {item.images.map((image, j) => (
@@ -74,6 +96,7 @@ const ProductCard = ({ items }) => {
                                             <span className="visually-hidden">Next</span>
                                         </button>
                                     </div>
+                                    </Link>
                                 </div>
                             )}
                             <div class="card-body">
@@ -100,10 +123,28 @@ const ProductCard = ({ items }) => {
                                 <button class="btn btn-primary w-100" onClick={()=>handleCart(item)}>Add to Cart</button>
                             </div>
                         </div>
+                     
                     </div>
+                  
                 )}
             </div>
-
+            <ReactPaginate
+                breakLabel="..."
+                nextLabel="next >"
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={5}
+                pageCount={pageCount}
+                previousLabel="< previous"
+                renderOnZeroPageCount={null}
+                containerClassName="pagination"
+                pageClassName="page-item"
+                pageLinkClassName="page-link"
+                activeClassName="active"
+                previousClassName="page-item"
+                nextClassName="page-item"
+                previousLinkClassName="page-link"
+                nextLinkClassName="page-link"
+      />
         </>
     )
 }

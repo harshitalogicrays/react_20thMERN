@@ -14,6 +14,8 @@ import Orders from "./features/Admin/Orders";
 import OrderDetails from "./features/Admin/OrderDetails";
 import Contact from "./features/Contact";
 import Products from "./features/Products";
+import ProductDetails from "./features/ProductDetails";
+import Cart from "./features/Cart";
 
 const router = createBrowserRouter([
     {path:'/',element:<App/>,
@@ -23,6 +25,8 @@ const router = createBrowserRouter([
             {path:'login',element:<Login/>},
             {path:'contact',element:<Contact/>},
             {path:'category/:name',element:<Products/>},
+            {path:"/product/:id",element:<ProductDetails/>},
+            {path:"/cart",element:<Cart/>}
         ]
     },
     {path:'admin',element:<AdminLayout/>,

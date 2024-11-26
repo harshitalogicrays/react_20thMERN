@@ -13,6 +13,7 @@ import {
 import { HamburgerIcon } from '@chakra-ui/icons'
 import { fetchCategories, selectCategories } from '../redux/categorySlice.js'
 import { FaShoppingCart } from 'react-icons/fa'
+import { selectCartItems } from '../redux/cartSlice.js'
 
 
 const Header = ({setSideBarOpen}) => {
@@ -47,6 +48,8 @@ const Header = ({setSideBarOpen}) => {
     setSideBarOpen(false)
     return navigate(url)
   }
+
+  const cartItems = useSelector(selectCartItems)
   return (
     <>
       <Box>
@@ -60,7 +63,7 @@ const Header = ({setSideBarOpen}) => {
             <IconButton icon={<FaShoppingCart style={{fontSize:'1.5rem'}}/>}
             colorScheme='black' onClick={() => handleNavigate('/cart')}></IconButton>
             <Badge colorScheme='red' borderRadius="full" 
-            position="relative" left="-20px" top='-10px'>0</Badge>
+            position="relative" left="-20px" top='-10px'>{cartItems.length}</Badge>
             <Showonlogout>
             <Button colorScheme='black' onClick={() => handleNavigate('/login')}>Login</Button>
             <Button colorScheme='black' onClick={() => handleNavigate('/register')}>Register</Button>
