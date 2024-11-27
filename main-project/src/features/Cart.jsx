@@ -2,6 +2,9 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { calculatetotal, decrease, emptycart, increase, removefromcart, selectCartItems, selectTotal } from '../redux/cartSlice'
 import { BsTrash } from 'react-icons/bs'
+import { selectIsLoggedIn } from '../redux/authSlice'
+import { toast } from 'react-toastify'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const Cart = () => {
     const cartItems = useSelector(selectCartItems)
@@ -10,6 +13,20 @@ const Cart = () => {
     useEffect(()=>{
         dispatch(calculatetotal())
     },[cartItems])
+
+    const isLoggedIn = useSelector(selectIsLoggedIn)
+    const navigate = useNavigate()
+    const location = useLocation()
+    // console.log(location)
+    const handleCheckout=()=>{
+        if(!isLoggedIn){
+            toast.error("please login first")
+            navigate('/login',{state:{to:location.pathname}})
+        }
+        else {
+            navigate('/checkout')
+        }
+    }
   return (
     <div className='container mt-5 shadow p-3'>
         <h1>Cart Page</h1> <hr/>
@@ -61,7 +78,8 @@ const Cart = () => {
             <div className="col">
                 <h4>Total : <span className='float-end'>${total}</span></h4><hr/>
                 <div class="d-grid gap-2">
-                    <button type="button" class="btn btn-warning"> Checkout </button>
+                    <button type="button" class="btn btn-warning" 
+                    disabled={cartItems.length==0 && "true"} onClick={handleCheckout}> Checkout </button>
                 </div>
                 
             </div>

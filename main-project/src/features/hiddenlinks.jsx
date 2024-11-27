@@ -14,16 +14,16 @@ export const Showonlogout = ({children})=>{
     else return null
 }
 
-// export const ProtectedAdmin = ({children})=>{
-//     const isLoggedIn = useSelector(selectIsLoggedIn)
-//     const role = useSelector(selectUserRole)
-//     if(isLoggedIn && role=="0"){return children}
-//     else return <Navigate to='/login' replace={true}/>
-// }
+export const ProtectedAdmin = ({children})=>{
+    const isLoggedIn = useSelector(selectIsLoggedIn)
+    const role = useSelector(selectUserRole)
+    if(isLoggedIn && role=="0"){return children}
+    else return <Navigate to='/login' replace={true}/>
+}
 
-// export const Protected = ({children})=>{
-//     const isLoggedIn = useSelector(selectIsLoggedIn)
-//     const role = useSelector(selectUserRole)
-//     if(isLoggedIn && role=="1"){return children}
-//     else return <Navigate to='/login' replace={true}/>
-// }
+export const Protected = ({children})=>{
+    const isLoggedIn = useSelector(selectIsLoggedIn)
+    const role = useSelector(selectUserRole)
+    if(isLoggedIn && role=="1"){return children}
+    else return <Navigate to='/login' replace={true}/>
+}

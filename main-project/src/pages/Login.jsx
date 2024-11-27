@@ -4,7 +4,7 @@ import Image1 from '/src/assets/images/login.png'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Loader from '../features/Loader'
 import { useDispatch } from 'react-redux'
 import { LOGIN_USER } from '../redux/authSlice'
@@ -13,6 +13,9 @@ const Login = () => {
     const [isLoading,setIsLoading] =useState(false)
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const location = useLocation()
+    console.log(location)
+    const redirectURL = location.state ? location.state.to : "/"
     const {register,handleSubmit, formState: { errors },trigger}=useForm()
     let submitForm=async(user)=>{
         setIsLoading(true)
@@ -24,7 +27,7 @@ const Login = () => {
                 let obj = {userEmail:res.data[0].email,userName:res.data[0].username,userRole:res.data[0].role,userId:res.data[0].id} 
                 dispatch(LOGIN_USER(obj))
                 toast.success("loggedIn successfully")
-                if(res.data[0].role=='1'){  navigate('/')}
+                if(res.data[0].role=='1'){  navigate(redirectURL)}
                 else if(res.data[0].role=='0'){  navigate('/admin')}
                  }
         setIsLoading(false)

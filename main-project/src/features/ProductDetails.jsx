@@ -4,38 +4,46 @@ import { useDispatch, useSelector } from "react-redux";
 
 import ReactImageMagnify from "@blacklab/react-image-magnify";
 import { selectItems } from "../redux/itemSlice";
-import { addtocart } from "../redux/cartSlice";
+import { addtocart, selectCartItems, updatecartitem } from "../redux/cartSlice";
 import { toast } from "react-toastify";
 
 const ProductDetails = () => {
   const dispatch = useDispatch()
-    const [selectedImage, setSelectedImage] = useState("");
+  const [selectedImage, setSelectedImage] = useState("");
   const { id } = useParams();
   const allproducts = useSelector(selectItems)
   const product = allproducts.find(product=>product.id==id)
-  useEffect(()=>{
-    setSelectedImage(product.images[0])
-  },[product])
+  useEffect(()=>{setSelectedImage(product.images[0]) },[product])
 
-  const [selectedOptions,setSelectedOptions] = useState({})
-  const handleSize = (size,id)=>{
-      setSelectedOptions(prev =>({...prev,[id]:{...prev[id],selectedSize:size}}))
+  //
+  const cartItems = useSelector(selectCartItems)
+  const cartItem  = cartItems.find(item => item.id==id)
+  const [selectedOptions,setSelectedOptions] = useState({
+    selectedSize:cartItem?.size || null,
+    selectedColor:cartItem?.color || null
+  })
+  const handleSize = (size)=>{
+      setSelectedOptions(prev =>({...prev,selectedSize:size}))
+      if(cartItem)
+      dispatch(updatecartitem({id:product.id,size:size,color:cartItem.color}))
   }
-  const handleColor = (color,id)=>{
-      setSelectedOptions(prev =>({...prev,[id]:{...prev[id],selectedColor:color}}))
+  const handleColor = (color)=>{
+      setSelectedOptions(prev =>({...prev,selectedColor:color}))
+      if(cartItem)
+      dispatch(updatecartitem({id:product.id,size:cartItem.size,color:color}))
   }
 
   const handlecart =()=>{
-    const s = selectedOptions[item.id]?.selectedSize
-    const c  =selectedOptions[item.id]?.selectedColor
-    if(!s || !c){
+    const {selectedSize,selectedColor} = selectedOptions
+    if(!selectedSize || !selectedColor){
         toast.error("please select size and color");return
     }
     else {
-        // console.log({item,size:s,color:c})
-        dispatch(addtocart({product,size:s,color:c}))
+        dispatch(addtocart({id:product.id,name:product.name,brand:product.brand,category:product.category,price:product.price,stock:product.stock,size:selectedSize,color:selectedColor,images:product.images}))
     }
   }
+
+
   return (
    <>
 <div className="container mt-5">
@@ -86,22 +94,25 @@ const ProductDetails = () => {
           </p>
           <p class="card-text">Sizes:
                                     {product.sizes.map((size, index) => <button  key={index}
-                                    className={`btn ms-2 ${size==selectedOptions[product.id]?.selectedSize ? "btn-primary":"btn-outline-primary"}`}
-                                    onClick={()=>handleSize(size,product.id)}
+                                    className={`btn ms-2 ${size==selectedOptions?.selectedSize ? "btn-primary":"btn-outline-primary"}`}
+                                    onClick={()=>handleSize(size)}
                                     >{size}</button>
                                     )}
                                 </p>
                                 <p class="card-text">Colors:
                                     {product.colors.map((color, index) => 
                                     <button  key={index}
-                                    className={`btn ms-2 ${color==selectedOptions[product.id]?.selectedColor ? "border-2 border-dark":""}`}
+                                    className={`btn ms-2 ${color==selectedOptions?.selectedColor ? "border-2 border-dark":""}`}
                                     style={{background:color}}
-                                    onClick={()=>handleColor(color,product.id)}
+                                    onClick={()=>handleColor(color)}
                                     >{color}</button>
                                     )}
                                 </p>
           <div className="mt-3">
-            <button className="btn btn-primary me-3" onClick={handlecart}>Add to Cart</button>
+            {cartItem ? 
+              <span className="text-success me-3">Already in cart</span>
+            :    <button className="btn btn-primary me-3" onClick={handlecart}>Add to Cart</button>}
+        
             <Link className="btn btn-secondary" to='/'>Go Back</Link>
           </div>
         </div>

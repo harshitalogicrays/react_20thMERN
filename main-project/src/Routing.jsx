@@ -16,6 +16,8 @@ import Contact from "./features/Contact";
 import Products from "./features/Products";
 import ProductDetails from "./features/ProductDetails";
 import Cart from "./features/Cart";
+import Checkout from "./features/Checkout";
+import { Protected, ProtectedAdmin } from "./features/hiddenlinks";
 
 const router = createBrowserRouter([
     {path:'/',element:<App/>,
@@ -26,10 +28,11 @@ const router = createBrowserRouter([
             {path:'contact',element:<Contact/>},
             {path:'category/:name',element:<Products/>},
             {path:"/product/:id",element:<ProductDetails/>},
-            {path:"/cart",element:<Cart/>}
+            {path:"/cart",element:<Cart/>},
+            {path:'/checkout',element:<Protected><Checkout/></Protected>},
         ]
     },
-    {path:'admin',element:<AdminLayout/>,
+    {path:'admin',element:<ProtectedAdmin><AdminLayout/></ProtectedAdmin>,
         children:[
             {path:'',element:<Dashboard/>},
             {path:'category/add',element:<AddCategory/>},

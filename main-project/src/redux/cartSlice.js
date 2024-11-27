@@ -45,10 +45,17 @@ const cartSlice = createSlice({
     calculatetotal(state,action){
       const t =  state.cartItems.reduce((prev,curr)=>{return prev+(curr.price*curr.qty)},0)
       state.total = t
+    },
+    updatecartitem(state,action){
+      console.log(action.payload)
+      const {id,size,color} =action.payload
+      const item = state.cartItems.find(item=>item.id==id)
+      if(item){ item.size= size ,item.color = color}
+      state.cartItems=[...state.cartItems]
     }
   } 
 })
-export const {addtocart,increase,decrease,removefromcart,emptycart,calculatetotal} = cartSlice.actions
+export const {addtocart,increase,decrease,removefromcart,emptycart,calculatetotal,updatecartitem} = cartSlice.actions
 export default cartSlice.reducer
 export const selectCartItems = state=>state.cart.cartItems
 export const selectTotal = state=>state.cart.total
