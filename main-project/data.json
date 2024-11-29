@@ -190,5 +190,72 @@
       "createdAt": "2024-11-21T04:35:24.960Z"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "id": "3dc0",
+      "shippingAddress": {
+        "name": "aa",
+        "email": "aa",
+        "mobile": "2121",
+        "address": "wsweqw",
+        "city": "qeqe",
+        "postalcode": "121"
+      },
+      "userId": "e772",
+      "cartItems": [
+        {
+          "id": "bce4",
+          "name": "qe",
+          "brand": "qeq1",
+          "category": "wr",
+          "price": "111",
+          "stock": "11",
+          "size": "xs",
+          "color": "cream",
+          "images": [
+            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124941/items/emvnyl6islv1wf4dsaip.jpg",
+            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124943/items/h7aiyv4dmlebogdl674e.png",
+            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124946/items/usemp0rilm7ufxpzhdr0.jpg",
+            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124949/items/fpjlt65afqydnica5udo.jpg"
+          ],
+          "qty": 1
+        }
+      ],
+      "total": 111,
+      "createdAt": "2024-11-29T04:11:22.226Z"
+    },
+    {
+      "id": "ba7d",
+      "shippingAddress": {
+        "name": "aa",
+        "email": "aa",
+        "mobile": "2121",
+        "address": "wsweqw",
+        "city": "qeqe",
+        "postalcode": "121"
+      },
+      "userId": "e772",
+      "cartItems": [
+        {
+          "id": "bce4",
+          "name": "qe",
+          "brand": "qeq1",
+          "category": "wr",
+          "price": "111",
+          "stock": "11",
+          "size": "xs",
+          "color": "cream",
+          "images": [
+            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124941/items/emvnyl6islv1wf4dsaip.jpg",
+            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124943/items/h7aiyv4dmlebogdl674e.png",
+            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124946/items/usemp0rilm7ufxpzhdr0.jpg",
+            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124949/items/fpjlt65afqydnica5udo.jpg"
+          ],
+          "qty": 1
+        }
+      ],
+      "total": 111,
+      "createdAt": "2024-11-29T04:12:15.162Z"
+    }
+  ]
 }

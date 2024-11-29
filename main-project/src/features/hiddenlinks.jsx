@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux"
-import { selectIsLoggedIn, selectUserRole } from "../redux/authSlice"
-import { Navigate } from "react-router-dom"
+import { selectIsLoggedIn, selectUserId, selectUserRole } from "../redux/authSlice"
+import { Navigate,  } from "react-router-dom"
+import { toast } from "react-toastify"
+import axios from "axios"
 
 export const ShowonLogin=({children})=>{
     const isLoggedIn = useSelector(selectIsLoggedIn)
@@ -26,4 +28,18 @@ export const Protected = ({children})=>{
     const role = useSelector(selectUserRole)
     if(isLoggedIn && role=="1"){return children}
     else return <Navigate to='/login' replace={true}/>
+}
+
+
+export const saveorder = ({shippingAddress,userId,cartItems,total})=>{
+    let order = async()=>{
+        try{
+            await axios.post(`${import.meta.env.VITE_BASE_URL}/orders`,{shippingAddress,userId,cartItems,total,createdAt:new Date()})
+            toast.success("order placed")
+        }
+        catch(err){
+            toast.error(err.message)
+        }
+}
+    order()
 }

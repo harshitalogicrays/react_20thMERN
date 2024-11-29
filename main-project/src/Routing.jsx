@@ -18,6 +18,7 @@ import ProductDetails from "./features/ProductDetails";
 import Cart from "./features/Cart";
 import Checkout from "./features/Checkout";
 import { Protected, ProtectedAdmin } from "./features/hiddenlinks";
+import Thankyou from "./features/Thankyou";
 
 const router = createBrowserRouter([
     {path:'/',element:<App/>,
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
             {path:"/product/:id",element:<ProductDetails/>},
             {path:"/cart",element:<Cart/>},
             {path:'/checkout',element:<Protected><Checkout/></Protected>},
+            {path:'/thankyou',element:<Protected><Thankyou/></Protected>},
         ]
     },
     {path:'admin',element:<ProtectedAdmin><AdminLayout/></ProtectedAdmin>,
