@@ -15,7 +15,6 @@ app.get('/',(req,res)=>{
  //http://localhost:4000/create-payment-intent
 app.post('/create-payment-intent',async(req,res)=>{
     let {amount}=req.body
-    console.log(amount)
     try{
         const paymentIntents = await stripe.paymentIntents.create({
             amount,

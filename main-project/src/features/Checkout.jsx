@@ -35,7 +35,7 @@ const Checkout = () => {
        }    
        dispatch(store_address(shippingAddress))
        if(paymentMethod =="cod"){
-            saveorder({shippingAddress,userId,cartItems,total,status:"in progress"})
+            saveorder({shippingAddress,userId,cartItems,total,status:"in progress",paymentMethod:"cod"})
             dispatch(emptycart())
             navigate('/thankyou')
        }
@@ -98,13 +98,13 @@ const Checkout = () => {
                     onChange={()=>setPaymentMethod("cod")}/>
                     <label class="form-check-label" for=""> cash on delivery </label>
                 </div>
-                <div class="form-check">
+                <div class="form-check mb-3">
                     <input class="form-check-input" type="radio" name="payment"  value="online"
                     onChange={()=>setPaymentMethod("online")} checked={paymentMethod=="online"}/>
                     <label class="form-check-label" for=""> Pay Online</label>
                 </div>
                 {(paymentMethod=="online" && clientsecret) && <PaymentForm clientsecret={clientsecret}/>}
-                <div className="row">
+                <div className="row mt-2">
                     <div className="col d-grid"> <button type="submit"  class="btn btn-primary"> Place Order </button></div>
                     <div className="col d-grid"> <button type="reset"  class="btn btn-danger"> Cancel </button></div>
                 </div>
