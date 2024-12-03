@@ -1,0 +1,23 @@
+local json-server 
+login and register 
+loader 
+products - 
+
+
+fetch 
+axios  - npm i axios 
+
+
+admin dashboard - 
+navbar ->sidebar 
+
+category crud - 
+name, desc  ,image
+product  - category name, name,image, price, sizes , colors , material,desc 
+
+cloud - URL  - cloudinary
+
+=====================================
+frontend  -  add to cart , payment ,email , order history 
+
+orders -  admin will manages -> change order status 

@@ -4,13 +4,15 @@ import categorySlice from "./categorySlice";
 import itemSlice from './itemSlice'
 import cartSlice from "./cartSlice";
 import checkoutSlice from './CheckoutSlice'
+import orderSlice from './orderSlice'
 const store = configureStore({
     reducer:{
             auth:authSlice,
             category:categorySlice,
             item:itemSlice,
             cart:cartSlice,
-            checkout:checkoutSlice
+            checkout:checkoutSlice,
+            order:orderSlice,
     }
 })
 export default store 

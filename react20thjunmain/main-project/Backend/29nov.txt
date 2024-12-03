@@ -1,0 +1,7 @@
+npm init --y - package.json
+npm i express stripe cors dotenv nodemon
+
+require()  commonjs 
+import() - module
+
+ "type": "module", => we will be able to use import/export 

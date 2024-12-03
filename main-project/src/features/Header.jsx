@@ -70,6 +70,7 @@ const Header = ({setSideBarOpen}) => {
             </Showonlogout>
             <ShowonLogin>
             <Button colorScheme='black'>Welcome {username}</Button>
+            <Button colorScheme='black' marginLeft={2} onClick={() => handleNavigate('/myorders')}>My Orders</Button>
             <Button colorScheme='black' onClick={handleLogout}>Logout</Button>
             </ShowonLogin>
           </HStack>

@@ -201,82 +201,16 @@
   ],
   "orders": [
     {
-      "id": "3dc0",
+      "id": "3c99",
       "shippingAddress": {
-        "name": "aa",
-        "email": "aa",
-        "mobile": "2121",
-        "address": "wsweqw",
-        "city": "qeqe",
-        "postalcode": "121"
+        "name": "ewr",
+        "email": "wrwrw",
+        "mobile": "423",
+        "address": "fhgfh",
+        "city": "fhfh",
+        "postalcode": "2424"
       },
       "userId": "e772",
-      "cartItems": [
-        {
-          "id": "bce4",
-          "name": "qe",
-          "brand": "qeq1",
-          "category": "wr",
-          "price": "111",
-          "stock": "11",
-          "size": "xs",
-          "color": "cream",
-          "images": [
-            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124941/items/emvnyl6islv1wf4dsaip.jpg",
-            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124943/items/h7aiyv4dmlebogdl674e.png",
-            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124946/items/usemp0rilm7ufxpzhdr0.jpg",
-            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124949/items/fpjlt65afqydnica5udo.jpg"
-          ],
-          "qty": 1
-        }
-      ],
-      "total": 111,
-      "createdAt": "2024-11-29T04:11:22.226Z"
-    },
-    {
-      "id": "ba7d",
-      "shippingAddress": {
-        "name": "aa",
-        "email": "aa",
-        "mobile": "2121",
-        "address": "wsweqw",
-        "city": "qeqe",
-        "postalcode": "121"
-      },
-      "userId": "e772",
-      "cartItems": [
-        {
-          "id": "bce4",
-          "name": "qe",
-          "brand": "qeq1",
-          "category": "wr",
-          "price": "111",
-          "stock": "11",
-          "size": "xs",
-          "color": "cream",
-          "images": [
-            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124941/items/emvnyl6islv1wf4dsaip.jpg",
-            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124943/items/h7aiyv4dmlebogdl674e.png",
-            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124946/items/usemp0rilm7ufxpzhdr0.jpg",
-            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124949/items/fpjlt65afqydnica5udo.jpg"
-          ],
-          "qty": 1
-        }
-      ],
-      "total": 111,
-      "createdAt": "2024-11-29T04:12:15.162Z"
-    },
-    {
-      "id": "8732",
-      "shippingAddress": {
-        "name": "aaa",
-        "email": "erwrwr",
-        "mobile": "1131",
-        "address": "sdgdgg",
-        "city": "dgdg",
-        "postalcode": "131"
-      },
-      "userId": "837d",
       "cartItems": [
         {
           "id": "3156",
@@ -285,7 +219,7 @@
           "category": "Shirts",
           "price": "1111",
           "stock": "11",
-          "size": "xs",
+          "size": "s",
           "color": "red",
           "images": [
             "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124833/items/b6igsbtjnuy2xritcq9v.jpg",
@@ -298,43 +232,102 @@
       ],
       "total": 1111,
       "paymentMethod": "cod",
-      "status": "in progress",
-      "createdAt": "2024-11-30T03:49:19.357Z"
+      "status": "placed",
+      "createdAt": "2024-12-03T04:17:48.450Z",
+      "orderDate": "12/3/2024",
+      "orderTime": "9:47:48 AM",
+      "editedAt": "2024-12-03T04:37:39.475Z"
     },
     {
-      "id": "bc61",
+      "id": "b913",
       "shippingAddress": {
-        "name": "wrw",
-        "email": "admin@gmail.com",
-        "mobile": "12123",
-        "address": "erew",
-        "city": "wqrwr",
-        "postalcode": "1313"
+        "name": "fg",
+        "email": "fgf",
+        "mobile": "1213",
+        "address": "rgrt",
+        "city": "tet",
+        "postalcode": "13131"
       },
       "userId": "e772",
       "cartItems": [
         {
-          "id": "3156",
-          "name": "werwrwrwr",
-          "brand": "aaa",
-          "category": "Shirts",
-          "price": "1111",
+          "id": "bce4",
+          "name": "qe",
+          "brand": "qeq1",
+          "category": "wr",
+          "price": "111",
           "stock": "11",
           "size": "xs",
+          "color": "aqua",
+          "images": [
+            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124941/items/emvnyl6islv1wf4dsaip.jpg",
+            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124943/items/h7aiyv4dmlebogdl674e.png",
+            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124946/items/usemp0rilm7ufxpzhdr0.jpg",
+            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124949/items/fpjlt65afqydnica5udo.jpg"
+          ],
+          "qty": 1
+        },
+        {
+          "id": "f475",
+          "name": "err",
+          "brand": "hp",
+          "category": "shirt",
+          "price": "111",
+          "stock": "13131",
+          "size": "m",
           "color": "red",
           "images": [
-            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124833/items/b6igsbtjnuy2xritcq9v.jpg",
-            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124833/items/ajnivp6vvckkzafuceaw.jpg",
-            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731127221/items/qvaxtvd7vkscyswjzgw3.jpg",
-            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731127222/items/apcaall2essgoywf0n8h.jpg"
+            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1732163721/items/hhnbspfrhswnvspicdnm.png",
+            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1732163722/items/tx558d2wqd8dsfksqkyr.png",
+            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1732163722/items/k87lmhdw3mmuefbcdptz.png"
           ],
           "qty": 1
         }
       ],
-      "total": 1111,
+      "total": 222,
       "paymentMethod": "online",
+      "status": "delivered",
+      "createdAt": "2024-12-03T04:18:23.617Z",
+      "orderDate": "12/3/2024",
+      "orderTime": "9:48:23 AM",
+      "editedAt": "2024-12-03T04:37:46.739Z"
+    },
+    {
+      "id": "ce01",
+      "shippingAddress": {
+        "name": "erw",
+        "email": "rwr",
+        "mobile": "13",
+        "address": "dg",
+        "city": "gdgd",
+        "postalcode": "1313"
+      },
+      "userId": "837d",
+      "cartItems": [
+        {
+          "id": "bce4",
+          "name": "qe",
+          "brand": "qeq1",
+          "category": "wr",
+          "price": "111",
+          "stock": "11",
+          "size": "xs",
+          "color": "aqua",
+          "images": [
+            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124941/items/emvnyl6islv1wf4dsaip.jpg",
+            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124943/items/h7aiyv4dmlebogdl674e.png",
+            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124946/items/usemp0rilm7ufxpzhdr0.jpg",
+            "http://res.cloudinary.com/harshitalogicraysacademy/image/upload/v1731124949/items/fpjlt65afqydnica5udo.jpg"
+          ],
+          "qty": 1
+        }
+      ],
+      "total": 111,
+      "paymentMethod": "cod",
       "status": "in progress",
-      "createdAt": "2024-11-30T04:34:39.033Z"
+      "createdAt": "2024-12-03T04:29:58.752Z",
+      "orderDate": "12/3/2024",
+      "orderTime": "9:59:58 AM"
     }
   ]
 }
