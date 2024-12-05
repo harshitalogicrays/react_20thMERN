@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import CheckoutSummary from './CheckoutSummary'
 import { toast } from 'react-toastify'
-import { saveorder } from './hiddenlinks'
+import { saveorder, sendmail } from './hiddenlinks'
 import { useDispatch, useSelector } from 'react-redux'
 import { store_address } from '../redux/CheckoutSlice'
-import { selectUserId } from '../redux/authSlice'
+import { selectUserEmail, selectUserId } from '../redux/authSlice'
 import { useNavigate } from 'react-router-dom'
 import { emptycart, selectCartItems, selectTotal } from '../redux/cartSlice'
 import axios from 'axios'
@@ -20,8 +20,10 @@ const Checkout = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const userId = useSelector(selectUserId)
-    const cartItems = useSelector(selectCartItems)
+   const cartItems = useSelector(selectCartItems)
     const total = useSelector(selectTotal)
+    const userEmail = useSelector(selectUserEmail)
+
     const [shippingAddress,setShippingAddress] = useState({
         name:"",email:"",mobile:"",address:"",city:"",postalcode:""
     })
@@ -35,7 +37,8 @@ const Checkout = () => {
        }    
        dispatch(store_address(shippingAddress))
        if(paymentMethod =="cod"){
-            saveorder({shippingAddress,userId,cartItems,total,status:"in progress",paymentMethod:"cod"})
+            saveorder({shippingAddress,userId,cartItems,total,status:"in progress",paymentMethod:"cod",email:userEmail})
+            sendmail({email:userEmail,name:shippingAddress.name,status:"in progress",amount:total,payment:"cod"})
             dispatch(emptycart())
             navigate('/thankyou')
        }

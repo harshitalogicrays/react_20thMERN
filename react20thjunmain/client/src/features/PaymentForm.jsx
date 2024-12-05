@@ -1,11 +1,11 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import React from 'react'
 import { toast } from 'react-toastify'
-import { saveorder } from './hiddenlinks'
+import { saveorder, sendmail } from './hiddenlinks'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { emptycart, selectCartItems, selectTotal } from '../redux/cartSlice'
-import { selectUserId } from '../redux/authSlice'
+import { selectUserEmail, selectUserId } from '../redux/authSlice'
 import { selectCheckout } from '../redux/CheckoutSlice'
 
 const PaymentForm = ({clientsecret}) => {
@@ -14,6 +14,7 @@ const PaymentForm = ({clientsecret}) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const userId = useSelector(selectUserId)
+  const email = useSelector(selectUserEmail)
   const cartItems = useSelector(selectCartItems)
   const total = useSelector(selectTotal)
   const shippingAddress = useSelector(selectCheckout)
@@ -27,7 +28,8 @@ const PaymentForm = ({clientsecret}) => {
       }).then((result)=>{
           if(result.paymentIntent.status=="succeeded"){
             toast.success("Payment done")
-            saveorder({shippingAddress,userId,cartItems,total,status:"in progress",paymentMethod:"online"})
+            saveorder({shippingAddress,userId,cartItems,total,status:"in progress",paymentMethod:"online",email})
+            sendmail({email,name:shippingAddress.name,status:"in progress",amount:total,payment:"online"})
             dispatch(emptycart())
             navigate('/thankyou')   }
           else if(result.error){console.log(result.error)} })  }

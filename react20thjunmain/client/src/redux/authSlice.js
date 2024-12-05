@@ -2,7 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const authSlice = createSlice({
 name:'auth',
-initialState:{isLoggedIn:false, userEmail:'',userId:'',userRole:'',userName:''},
+initialState:{isLoggedIn: sessionStorage.getItem("20thjunreact") ? JSON.parse(sessionStorage.getItem("20thjunreact")).isLoggedIn : false  ,
+     userEmail:sessionStorage.getItem("20thjunreact") ? JSON.parse(sessionStorage.getItem("20thjunreact")).userEmail :'',
+     userName:sessionStorage.getItem("20thjunreact") ? JSON.parse(sessionStorage.getItem("20thjunreact")).userName :'',  
+     userId:sessionStorage.getItem("20thjunreact") ? JSON.parse(sessionStorage.getItem("20thjunreact")).userId :'',
+     userRole:sessionStorage.getItem("20thjunreact") ? JSON.parse(sessionStorage.getItem("20thjunreact")).userRole :''},
 reducers:{
     LOGIN_USER(state,action){
         let {userEmail,userName,userId,userRole}  = action.payload

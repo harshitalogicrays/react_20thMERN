@@ -24,7 +24,8 @@ const Login = () => {
             if(res.data.length==0) toast.error("Invalid credentails")
             else if(res.data[0].password != user.password)toast.error("Invalid credentails")
             else {
-                let obj = {userEmail:res.data[0].email,userName:res.data[0].username,userRole:res.data[0].role,userId:res.data[0].id} 
+                let obj = {isLoggedIn:true,userEmail:res.data[0].email,userName:res.data[0].username,userRole:res.data[0].role,userId:res.data[0].id} 
+                sessionStorage.setItem("20thjunreact",JSON.stringify(obj))
                 dispatch(LOGIN_USER(obj))
                 toast.success("loggedIn successfully")
                 if(res.data[0].role=='1'){  navigate(redirectURL)}

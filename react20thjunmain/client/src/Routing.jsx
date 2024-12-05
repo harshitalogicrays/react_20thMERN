@@ -17,8 +17,10 @@ import Products from "./features/Products";
 import ProductDetails from "./features/ProductDetails";
 import Cart from "./features/Cart";
 import Checkout from "./features/Checkout";
-import { Protected, ProtectedAdmin } from "./features/hiddenlinks";
+import { allorders, Protected, ProtectedAdmin } from "./features/hiddenlinks";
 import Thankyou from "./features/Thankyou";
+import MyOrders from "./features/MyOrders";
+import MyOrderDetails from "./features/MyOrderDetails";
 
 const router = createBrowserRouter([
     {path:'/',element:<App/>,
@@ -32,6 +34,8 @@ const router = createBrowserRouter([
             {path:"/cart",element:<Cart/>},
             {path:'/checkout',element:<Protected><Checkout/></Protected>},
             {path:'/thankyou',element:<Protected><Thankyou/></Protected>},
+            {path:'/myorders',element:<Protected><MyOrders/></Protected> , loader:allorders },
+            {path:'/myorders/:id',element:<Protected><MyOrderDetails/></Protected>},
         ]
     },
     {path:'admin',element:<ProtectedAdmin><AdminLayout/></ProtectedAdmin>,
@@ -43,7 +47,7 @@ const router = createBrowserRouter([
             {path:'item/add',element:<AddItem/>},
             {path:'item/view',element:<ViewItems/>},
             {path:'item/edit/:id',element:<AddItem/>},
-            {path:'orders',element:<Orders/>},
+            {path:'orders',element:<Orders/> , loader:allorders},
             {path:'order/details/:id',element:<OrderDetails/>},
         ]
     },
