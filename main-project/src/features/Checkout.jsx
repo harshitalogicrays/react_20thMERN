@@ -101,16 +101,19 @@ const Checkout = () => {
                     onChange={()=>setPaymentMethod("cod")}/>
                     <label class="form-check-label" for=""> cash on delivery </label>
                 </div>
+                {paymentMethod=="cod" && 
+                <div className="row mt-2">
+                    <div className="col d-grid"> <button type="submit"  class="btn btn-primary"> Place Order </button></div>
+                    <div className="col d-grid"> <button type="reset"  class="btn btn-danger"> Cancel </button></div>
+                </div>
+                }
                 <div class="form-check mb-3">
                     <input class="form-check-input" type="radio" name="payment"  value="online"
                     onChange={()=>setPaymentMethod("online")} checked={paymentMethod=="online"}/>
                     <label class="form-check-label" for=""> Pay Online</label>
                 </div>
                 {(paymentMethod=="online" && clientsecret) && <PaymentForm clientsecret={clientsecret}/>}
-                <div className="row mt-2">
-                    <div className="col d-grid"> <button type="submit"  class="btn btn-primary"> Place Order </button></div>
-                    <div className="col d-grid"> <button type="reset"  class="btn btn-danger"> Cancel </button></div>
-                </div>
+               
         
             
                 </form>
